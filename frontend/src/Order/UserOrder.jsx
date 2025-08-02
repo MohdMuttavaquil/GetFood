@@ -11,8 +11,8 @@ const UserOrder = () => {
 
 
   const getdata = async () => {
-    const res = await axios.post('/api/order/userOrder', {}, { headers: { token } })
-    setData(res.data.userOrder)
+    const res = await axios.post('/api/order/userorder', {}, { headers: { token } })
+    setData(res.data.userorder)
   }
 
   useEffect(() => {

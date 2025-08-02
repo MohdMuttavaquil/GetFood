@@ -8,7 +8,7 @@ import Detail from './Home/Detail'
 import Login from "./login/Login"
 import Cart from "./Order/Cart"
 import Order from "./Order/Order"
-import Userorder from "./Order/Userorder"
+import Userorder from "./Order/UserOrder"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./utilis/scrolltotop"
@@ -30,7 +30,7 @@ function App() {
     <Route path='/Detail' element={<Detail />}></Route>
     <Route path="/Cart" element={<Cart />}></Route>
     <Route path="/Order" element={<Order />}></Route>
-    <Route path="/userorder" element={<Userorder />}></Route> 
+    <Route path="/UserOrder" element={<UserOrder />}></Route> 
     </Routes>
      <Footer />
      <ToastContainer />
