@@ -4,14 +4,14 @@ import axios from 'axios'
 import { photos } from '../assets/photo'
 
 
-const Userorder = () => {
+const UserOrder = () => {
 
   const { token } = useContext(AppContext)
   const [data, setData] = useState([])
 
 
   const getdata = async () => {
-    const res = await axios.post('/api/order/userorder', {}, { headers: { token } })
+    const res = await axios.post('/api/order/userOrder', {}, { headers: { token } })
     setData(res.data.userOrder)
   }
 
@@ -60,4 +60,4 @@ const Userorder = () => {
   )
 }
 
-export default Userorder
+export default UserOrder
