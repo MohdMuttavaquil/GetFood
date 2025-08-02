@@ -6,14 +6,15 @@ import axios from 'axios'
 
 const Home = () => {
 
+  const [category, setcategory] = useState("All");
+  const [menu_items, setmenu_item] = useState([])
+
   useEffect(()=>{
   axios.get("/api/food/itemlist")
   .then((res =>{setmenu_item(res.data)}))
   },[])
 
-  const [category, setcategory] = useState("All");
-  const [menu_items, setmenu_item] = useState([])
-
+  
   return (
     <div>
 
