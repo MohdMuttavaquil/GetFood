@@ -13,7 +13,14 @@ const port = process.env.PORT || 3000
 
 // Middleware 
 app.use(express.json())
-app.use(cors())
+//app.use(cors())
+
+// use in production 
+app.use(cors({
+  origin: ["https://your-frontend.onrender.com"], 
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 
 app.use('/api/user', userRouter)
 app.use('/api/food', foodRoute)
