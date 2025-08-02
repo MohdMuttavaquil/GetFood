@@ -8,7 +8,7 @@ import Detail from './Home/Detail'
 import Login from "./login/Login"
 import Cart from "./Order/Cart"
 import Order from "./Order/Order"
-import Userorder from "./Order/userorder"
+import Userorder from "./Order/Userorder"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ScrollToTop from "./utilis/scrolltotop"
