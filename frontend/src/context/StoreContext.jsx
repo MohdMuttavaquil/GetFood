@@ -13,6 +13,8 @@ export const AppProvider = ({ children }) => {
   const [total, setTotal] = useState(0)
   const [token, setToken] = useState("")
   const [cartData, setCartData] = useState([])
+  const url = 'https://getfood-backend-6643.onrender.com';
+  //const url = 'http://localhost:5000';
 
   useEffect(() => {
     const newToken = localStorage.getItem("token")
@@ -24,7 +26,7 @@ export const AppProvider = ({ children }) => {
 
   const getCartData = async () => {
 
-    const res = await axios.get("/api/cart/data", { headers: { token } })
+    const res = await axios.get(`${url}/api/cart/data`, { headers: { token } })
     let userCart = res.data.cartData
     setCartData(userCart)
     const newCertItem = []
@@ -42,7 +44,7 @@ export const AppProvider = ({ children }) => {
 
 
   return (
-    <AppContext.Provider value={{ cartData, setCartData, getCartData, token, setToken, id, setId, setCartItem, name, setName, price, setPrice, desc, setDesc, image, setImage, total, setTotal, cartItem }}>
+    <AppContext.Provider value={{ url, cartData, setCartData, getCartData, token, setToken, id, setId, setCartItem, name, setName, price, setPrice, desc, setDesc, image, setImage, total, setTotal, cartItem }}>
       {children}
     </AppContext.Provider>
   );

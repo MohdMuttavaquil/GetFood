@@ -6,7 +6,7 @@ import { showSuccessToast, showErrorToast } from '../utilis/Toast'
 
 const Order = () => {
 
-    const { total, token, cartItem, setTotal } = useContext(AppContext)
+    const { url, total, token, cartItem, setTotal } = useContext(AppContext)
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -32,7 +32,7 @@ const Order = () => {
         setTotal(0)
         const items = cartItem.map((item) => item.name)
 
-        const res = await axios.post('/api/order/payment', { amount: total + 40, data, items }, { headers: { token } })
+        const res = await axios.post(`${url}/api/order/payment`, { amount: total + 40, data, items }, { headers: { token } })
         const order = res.data
 
         const option = {
@@ -43,7 +43,7 @@ const Order = () => {
             description: 'Test Transaction',
             order_id: order.id,
             handler: async function (response) {
-                const verifyRes = await axios.post('/api/order/varify', {
+                const verifyRes = await axios.post(`${url}/api/order/varify`, {
                     order_id: response.razorpay_order_id,
                     payment_id: response.razorpay_payment_id,
                     signature: response.razorpay_signature

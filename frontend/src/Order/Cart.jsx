@@ -7,7 +7,7 @@ import { showRemoveToast } from '../utilis/Toast';
 
 const Cart = () => {
 
-    const { cartItem, token, getCartData, total, setTotal, setCartItem } = useContext(AppContext);
+    const { url, cartItem, token, getCartData, total, setTotal, setCartItem } = useContext(AppContext);
 
     const removetocart = async (id, itemprice) => {
         if (token === "") {
@@ -16,7 +16,7 @@ const Cart = () => {
             showRemoveToast('Item removed successfully!')
         }
         else {
-            const res = await axios.post("/api/cart/remove", { id }, { headers: { token } })
+            const res = await axios.post(`${url}/api/cart/remove`, { id }, { headers: { token } })
             setTotal((prev) => prev - itemprice)
             getCartData()
             showRemoveToast('Item removed successfully!')

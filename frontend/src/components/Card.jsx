@@ -5,11 +5,11 @@ import axios from 'axios';
 
 const Card = ({ itemId, itemImage, itemName, itemPrice, itemDesc }) => {
 
-  const { setName, setPrice, setDesc, setImage, setId } = useContext(AppContext);
+  const { url, setName, setPrice, setDesc, setImage, setId } = useContext(AppContext);
   const navigate = useNavigate()
 
   const print = async () => {
-    const res = await axios.get(`api/food/item/${itemId}`)
+    const res = await axios.get(`${url}/api/food/item/${itemId}`)
     const data = res.data
     setName(data.name)
     setDesc(data.desc)

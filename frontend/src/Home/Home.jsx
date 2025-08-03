@@ -1,16 +1,18 @@
-import { React } from 'react'
+import { React, useContext } from 'react'
 import { photos, menu_list } from '../assets/photo'
+import { AppContext } from '../context/StoreContext'
 import Card from '../components/Card'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Home = () => {
 
+  const { url } = useContext(AppContext)
   const [category, setcategory] = useState("All");
   const [menu_items, setmenu_item] = useState([])
 
   useEffect(()=>{
-  axios.get("/api/food/itemlist")
+  axios.get(`${url}/api/food/itemlist`)
   .then((res =>{setmenu_item(res.data)}))
   },[])
 

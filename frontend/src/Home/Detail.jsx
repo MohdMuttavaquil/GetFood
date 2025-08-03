@@ -9,7 +9,7 @@ const Detail = () => {
 
   const navgation = useNavigate()
 
-  const { token, getCartData, id, setTotal, name, price, desc, image, cartItem, setCartItem } = useContext(AppContext);
+  const { url, token, getCartData, id, setTotal, name, price, desc, image, cartItem, setCartItem } = useContext(AppContext);
 
 
   const addToCart = async () => {
@@ -22,7 +22,7 @@ const Detail = () => {
     }
 
     else {
-      const res = await axios.post("/api/cart/add", { id }, { headers: { token } })
+      const res = await axios.post(`${url}/api/cart/add`, { id }, { headers: { token } })
       setTotal((prev) => prev + price)
       getCartData()
       navgation('/')
@@ -32,7 +32,7 @@ const Detail = () => {
 };
 
   const order = async (price) => {
-      const res = await axios.post("/api/cart/add", { id }, { headers: { token } })
+      const res = await axios.post(`${url}/api/cart/add`, { id }, { headers: { token } })
       setTotal(price)
       getCartData()
       navgation('/order')

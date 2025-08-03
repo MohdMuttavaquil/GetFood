@@ -6,12 +6,12 @@ import { photos } from '../assets/photo'
 
 const UserOrder = () => {
 
-  const { token } = useContext(AppContext)
+  const { token, url } = useContext(AppContext)
   const [data, setData] = useState([])
 
 
   const getdata = async () => {
-    const res = await axios.post('/api/order/userorder', {}, { headers: { token } })
+    const res = await axios.post(`${url}/api/order/userorder`, {}, { headers: { token } })
     setData(res.data.userorder)
   }
 

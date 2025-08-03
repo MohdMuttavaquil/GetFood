@@ -22,7 +22,9 @@ const Navbar = ({ setlogin }) => {
   }
 
   const userCart = async ()=>{
-   await getCartData()
+    if (token !== "") {
+     await getCartData() 
+    }
   }
 
   return (

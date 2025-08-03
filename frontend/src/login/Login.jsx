@@ -13,7 +13,7 @@ const Login = ({ setlogin }) => {
     email: "",
     password: ""
   })
-  const { setToken } = useContext(AppContext)
+  const { url, setToken } = useContext(AppContext)
 
 
   const onChangehandler = (e) => {
@@ -24,14 +24,14 @@ const Login = ({ setlogin }) => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    let url = '/api/user'
+    let updateUrl = `${url}/api/user`
     if (newuser) {
-      url += '/ragister'
+      updateUrl += '/ragister'
     } else {
-      url += '/login'
+      updateUrl += '/login'
     }
 
-    const res = await axios.post(url, data)
+    const res = await axios.post(updateUrl, data)
     if (res.data.success) {
       const newToken = res.data.token
       setToken(newToken)
