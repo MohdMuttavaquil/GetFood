@@ -90,18 +90,7 @@ const Navbar = ({ setlogin }) => {
           <Link to="/" className="hover:text-cyan-400 transition">Home</Link>
           <a href="#menu" className="hover:text-cyan-400 transition">Menu</a>
           <Link to="/userorder" className="hover:text-cyan-400 transition">Your Order</Link>
-          {token === "" ? <button onClick={() => setlogin(true)} className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 sm:mr-24 rounded ml-10">
-              Sign In
-            </button> :
-              <div className='flex flex-col gap-2'>
-                <img src={photos.profile} onClick={() => showLogout()} className='h-[1.5rem] w-[1.5rem] sm:mr-24 rounded ml-10 ' />
-
-                <div onClick={() => logout()} className={show ? ' hover:text-red-600 flex my-2 items-center sm:mr-24 ml-4 gap-2' : 'hidden'}>
-                  <p className=' '>Logout</p>
-                  <img src={photos.logout} className='h-[1.25rem] w-[1.25rem] rounded ' />
-
-                </div>
-              </div>}
+         
         </div>
       )}
     </nav>

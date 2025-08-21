@@ -3,6 +3,7 @@ import { AppContext } from '../context/StoreContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { showSuccessToast, showErrorToast } from '../utilis/Toast'
+import Login from '../login/Login'
 
 const Order = () => {
 
@@ -25,8 +26,6 @@ const Order = () => {
 
         setData(data => ({ ...data, [name]: value }))
     }
-
-    // 5123 4500 0000 0008 test card number
 
     const payment = async () => {
         setTotal(0)
@@ -74,7 +73,9 @@ const Order = () => {
 
     return (
         <>
-            {token === "" ? <div className='min-h-screen md:w-[70%] mx-auto my-8 font-great font-semibold text-xl'>Please login for order </div> :
+            {token === "" ? <div className='min-h-screen mx-auto my-8 font-great text-xl'>Please login for order 
+                <Login />
+            </div> :
                 <div className='min-h-screen w-[80%] mx-auto flex pt-10 flex-col md:flex-row'>
 
                     <div className='md:mx-20 flex flex-col md:w-[40%] gap-2'>
@@ -92,7 +93,7 @@ const Order = () => {
                         <input onChange={changeHandler} value={data.phoneNo} name="phoneNo" className='outline-none border-2 border-[#ccc] rounded' type="text" placeholder='phone No' required />
                     </div>
 
-                    <div className='text-xl mt-14 font-semibold flex flex-col gap-4 w-[20rem]'>
+                    <div className='text-xl mt-14 font-semibold flex flex-col gap-4 sm:w-[20rem] w-[96%] mx-auto'>
 
                         <div className='flex justify-between'>
                             <p>Prise </p>

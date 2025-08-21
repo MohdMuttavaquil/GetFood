@@ -15,13 +15,6 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use(cors())
 
-// use in production 
-/*app.use(cors({
-  origin: ["https://your-frontend.onrender.com"], 
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));*/
-
 app.use('/api/user', userRouter)
 app.use('/api/food', foodRoute)
 app.use('/api/cart', cartRoute)

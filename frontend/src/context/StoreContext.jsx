@@ -33,12 +33,13 @@ export const AppProvider = ({ children }) => {
 
     const itemid2 = Object.keys(userCart).filter((id) => userCart[id] > 0).map((id) => parseInt(id))
     for (let id of itemid2) {
-      const responce = await axios.get(`/api/food/item/${id}`)
+      const responce = await axios.get(`${url}/api/food/item/${id}`)
       let data = responce.data
       newCertItem.push(data)
     }
-
-    setCartItem(newCertItem)
+    setTimeout(()=>{
+       setCartItem(newCertItem)
+    },1000)
 
   }
 

@@ -9,13 +9,16 @@ const UserOrder = () => {
   const { token, url } = useContext(AppContext)
   const [data, setData] = useState([])
 
-
-  const getdata = async () => {
-    const res = await axios.post(`${url}/api/order/userorder`, {}, { headers: { token } })
-    setData(res.data.userorder)
-  }
-
   useEffect(() => {
+    const getdata = async () => {
+      try {
+        const res = await axios.post(`${url}/api/order/userorder`, {}, { headers: { token } })
+        setData(res.data.userOrder || data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     getdata()
   }, [])
 
@@ -31,7 +34,7 @@ const UserOrder = () => {
               <div className='sm:w-[30%] w-[50%]'>
                 <p className='my-2 font-semibold font-great'>Items</p>
                 {i.item.map((i, index) => {
-                  return <p className='font-great font-bold-[400]' key={index}>{(index + 1) + " " + i}</p>
+                  return <p className='font-great font-bold-[400]' key={index}>{(index + 1) + ", " + i}</p>
                 })}
               </div>
 
@@ -53,8 +56,7 @@ const UserOrder = () => {
           </div>
         })}
 
-      </div> :
-        <div className='md:w-[70%] mx-auto my-8 font-great font-semibold text-xl'>Please login for orders details</div>}
+      </div> : <div className='w-full text-center text-xl pt-20 font-semibold font-great'>You do not have any orders yet</div>}
 
     </div>
   )

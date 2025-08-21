@@ -54,7 +54,7 @@ const Login = ({ setlogin }) => {
 
         <div className="flex justify-between py-4">
           {newuser ? <p className='text-xl'>Singin</p> : <p className='text-xl'>login</p>}
-          <img src={photos.cross} className='w-[1rem] h-[1rem]' onClick={() => setlogin(false)}></img >
+          <img src={photos.cross} className='w-[1rem] h-[1rem] cursor-pointer' onClick={() => setlogin(false)}></img >
         </div>
 
         <div className='flex flex-col gap-4 '>

@@ -37,8 +37,10 @@ const Cart = () => {
             {cartItem.map((item) => {
                 return (<div key={item.id} className='flex h-[20vh] justify-between my-6'>
                     <img src={item.image} className='h-full w-[10rem] rounded object-cover'></img>
-                    <p className='text-xl mx-1 w-[25%]'>{item.name} </p>
-                    <p className='text-xl font-semibold w-[25%]'>₹{item.price}</p>
+                    <div className="flex flex-col sm:justify-between sm:flex-row flex-1 pl-4">
+                        <p className='text-xl mx-1 w-[25%]'>{item.name} </p>
+                        <p className='text-xl font-semibold w-[25%]'>₹{item.price}</p>
+                    </div>
                     <img src={photos.remove} onClick={() => removetocart(item.id, item.price)} className='h-[1.5rem] w-[1.5rem] cursor-pointer' />
                 </div>)
             })}
