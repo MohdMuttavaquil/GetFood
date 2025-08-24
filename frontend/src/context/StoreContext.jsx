@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
   const [total, setTotal] = useState(0)
   const [token, setToken] = useState("")
   const [cartData, setCartData] = useState([])
+  
   const url = 'https://getfood-backend-6643.onrender.com';
   //const url = 'http://localhost:5000';
 

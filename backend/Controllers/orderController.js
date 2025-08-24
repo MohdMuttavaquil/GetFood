@@ -8,26 +8,14 @@ const razorpay = new Razorpay({
     key_secret: process.env.ROAZERPAY_KEY_SECRET
 })
 
-let id = 0
 
 const foodpayment = async (req, res)=>{
-    const { amount, data, items } = req.body
+    const { amount } = req.body
     
-    const neworder = new orderModle({
-      userid: req.body.userid,
-      amount: amount,
-      userInfo: data,
-      item: items
-    })
-    await neworder.save()
-    id = neworder._id
-    await userModel.findByIdAndUpdate(req.body.userid, { userCart:{} })
-
      const option = {
             amount: amount * 100,
             currency: "INR",
-            receipt: `receipt_${Date.now()}`,
-            
+            receipt: `receipt_${Date.now()}`,  
         }
 
     try {
@@ -47,6 +35,9 @@ const varifypayment = async (req, res)=>{
     order_id,
     payment_id,
     signature,
+    amount,
+    data,
+   items
   } = req.body;
 
   const body = `${order_id}|${payment_id}`;
@@ -56,7 +47,16 @@ const varifypayment = async (req, res)=>{
     .digest('hex');
 
   if (expectedSignature === signature) {
-    await orderModle.findByIdAndUpdate(id, {payment: true} );
+
+   const neworder = new orderModle({
+      userid: req.body.userid,
+      amount: amount,
+      userInfo: data,
+      item: items
+    })
+    await neworder.save()
+    await userModel.findByIdAndUpdate(req.body.userid, { userCart:{} })
+
     res.json({ status: 'success' });
   } else{
        await orderModle.findByIdAndDelete(id)
@@ -64,6 +64,26 @@ const varifypayment = async (req, res)=>{
   }
 
 }
+
+// Cash on delivery orders
+
+const cashOnDelivery = async (req, res)=>{
+  try {
+    const newOrder = new orderModle({
+      userid: req.body.userid,
+      amount: req.body.amount,
+      userInfo: req.body.data,
+      item: req.body.items,
+      payment: "cash on delivery"
+    })
+    await newOrder.save()
+    await orderModle.findByIdAndUpdate(req.body.userid, { userCart:{} })
+    res.json({success: true, message: "Oeder place"})
+  } catch (error) {
+    console.log(error)
+    res.json({success: false, message:"Error"})
+  }
+} 
 
 
 // for gate user order 
@@ -80,4 +100,4 @@ const userOrder = async (req, res)=>{
 }
 
 
-export { foodpayment, varifypayment, userOrder }
+export { foodpayment, varifypayment, cashOnDelivery, userOrder }

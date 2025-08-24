@@ -23,7 +23,7 @@ function App() {
    {login? <Login setlogin={setlogin} />: <></>}
     
 
-    <Navber setlogin={setlogin} />
+    <Navber setlogin={setlogin} login={login} />
     <ScrollToTop />
     <Routes>
     <Route path="/" element={<Home />}></Route>

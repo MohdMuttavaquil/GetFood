@@ -4,12 +4,17 @@ import { Link, useNavigate } from 'react-router-dom';
 import { photos } from '../assets/photo';
 import { AppContext } from '../context/StoreContext';
 import '../App.css'
+import { useEffect } from 'react';
 
-const Navbar = ({ setlogin }) => {
+const Navbar = ({ setlogin, login }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { token, setToken, getCartData } = useContext(AppContext)
   const [show, setShow] = useState(false)
   const navigate = useNavigate()
+
+  useEffect(()=>{
+    login ? document.body.style.overflow = "hidden" :  document.body.style.overflow = "auto"
+  }, [login])
 
   const showLogout = () => {
     setShow(!show)
