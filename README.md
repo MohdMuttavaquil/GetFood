@@ -1,6 +1,6 @@
-# 🍔 Food Delivery Web Application
+#  Food Delivery Web Application
 
-## 🚀 Overview
+##  Overview
 A **Full Stack MERN application** that allows users to browse menus, add items to the cart, place orders, and make secure payments.  
 Built using **React.js, Node.js, Express.js, MongoDB Atlas**, with **Auth0** for authentication and **Razorpay** for payments. Deployed on **Render** for backend and **Vercel** for frontend.  
 
