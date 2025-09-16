@@ -5,7 +5,7 @@ A **Full Stack MERN application** that allows users to browse menus, add items t
 Built using **React.js, Node.js, Express.js, MongoDB Atlas**, with **Auth0** for authentication and **Razorpay** for payments. Deployed on **Render** for backend and **Vercel** for frontend.  
 
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Frontend:** React.js, Tailwind CSS, JavaScript (ES6+)  
 - **Backend:** Node.js, Express.js, REST APIs  
 - **Database:** MongoDB Atlas, Mongoose  
