@@ -1,13 +1,12 @@
-import { React, useContext, useState } from 'react'
+import { React, useContext, useState, useEffect } from 'react'
 import { AppContext } from '../context/StoreContext'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { showSuccessToast, showErrorToast } from '../utilis/Toast'
-import Login from '../login/Login'
 
 const Order = () => {
 
-    const { url, total, token, cartItem, setTotal } = useContext(AppContext)
+    const { url, total, token, cartItem, setTotal, login, setLogin } = useContext(AppContext)
     const [data, setData] = useState({
         firstName: "",
         lastName: "",
@@ -17,6 +16,13 @@ const Order = () => {
         zipcode: "",
         phoneNo: "",
     })
+ 
+    // User login check
+    useEffect(() => {
+        if (token === "") {
+            setLogin(true);
+        }
+    }, [token]);
 
     const navagite = useNavigate()
 
@@ -81,8 +87,8 @@ const Order = () => {
 
     return (
         <>
-            {token === "" ? <div className='min-h-screen mx-auto my-8 font-great text-xl'>Please login for order
-                <Login />
+            {token ==="" ? <div className='min-h-screen text-center mt-12 font-great text-2xl font-semibold'>
+                Please login for order
             </div> :
                 <div className='min-h-screen w-[80%] mx-auto flex pt-10 flex-col md:flex-row'>
 

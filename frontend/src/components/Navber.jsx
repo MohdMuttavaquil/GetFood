@@ -6,9 +6,9 @@ import { AppContext } from '../context/StoreContext';
 import '../App.css'
 import { useEffect } from 'react';
 
-const Navbar = ({ setlogin, login }) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { token, setToken, getCartData } = useContext(AppContext)
+  const { token, setToken, getCartData, login, setLogin } = useContext(AppContext)
   const [show, setShow] = useState(false)
   const navigate = useNavigate()
 
@@ -60,11 +60,11 @@ const Navbar = ({ setlogin, login }) => {
               </Link>
             </div>
 
-            {token === "" ? <button onClick={() => setlogin(true)} className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 sm:mr-24 rounded ml-10">
+            {token === "" ? <button onClick={() => setLogin(true)} className="bg-cyan-500 hover:bg-cyan-600 text-black px-4 py-2 sm:mr-24 rounded ml-10">
               Sign In
             </button> :
               <div className='flex flex-col gap-2'>
-                <img src={photos.profile} onClick={() => showLogout()} className='h-[1.5rem] w-[1.5rem] sm:mr-24 rounded ml-10 ' />
+                <img src={photos.profile} onClick={() => showLogout()} className='h-[1.5rem] w-[1.5rem] sm:mr-24 rounded ml-10 ' /> 
 
                 <div onClick={() => logout()} className={show ? ' hover:text-red-600 flex my-2 items-center sm:mr-24 ml-4 gap-2' : 'hidden'}>
                   <p className=' '>Logout</p>

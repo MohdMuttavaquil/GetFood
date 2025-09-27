@@ -13,8 +13,9 @@ export const AppProvider = ({ children }) => {
   const [total, setTotal] = useState(0)
   const [token, setToken] = useState("")
   const [cartData, setCartData] = useState([])
+  const [login, setLogin] = useState(false)
   
-  const url = 'https://getfood-backend-6643.onrender.com';
+  const url = 'https://getfood-backend-6643.onrender.com'
   //const url = 'http://localhost:5000';
 
   useEffect(() => {
@@ -46,7 +47,7 @@ export const AppProvider = ({ children }) => {
 
 
   return (
-    <AppContext.Provider value={{ url, cartData, setCartData, getCartData, token, setToken, id, setId, setCartItem, name, setName, price, setPrice, desc, setDesc, image, setImage, total, setTotal, cartItem }}>
+    <AppContext.Provider value={{ url, cartData, setCartData, getCartData, token, setToken, id, setId, setCartItem, name, setName, price, setPrice, desc, setDesc, image, setImage, total, setTotal, cartItem, login, setLogin }}>
       {children}
     </AppContext.Provider>
   );
