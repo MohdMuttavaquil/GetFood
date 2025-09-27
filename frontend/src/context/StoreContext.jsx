@@ -17,7 +17,7 @@ export const AppProvider = ({ children }) => {
   
   const url = 'https://getfood-backend-6643.onrender.com'
   //const url = 'http://localhost:5000';
-
+ 
   useEffect(() => {
     const newToken = localStorage.getItem("token")
 
